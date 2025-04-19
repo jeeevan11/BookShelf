@@ -12,20 +12,49 @@ export const BookProvider = ({ children }) => {
   useEffect(() => {
     const savedFavorites = localStorage.getItem('favorites');
     if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
+      try {
+        setFavorites(JSON.parse(savedFavorites));
+      } catch (err) {
+        console.error('Error loading favorites:', err);
+        setFavorites([]);
+      }
     }
   }, []);
 
   // Save favorites to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    try {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    } catch (err) {
+      console.error('Error saving favorites:', err);
+    }
   }, [favorites]);
 
   const searchBooks = async (query) => {
+    // Input validation
+    if (!query || query.trim().length < 2) {
+      setError('Please enter at least 2 characters to search');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`);
+      const apiUrl = import.meta.env.VITE_GOOGLE_BOOKS_API_URL;
+      const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
+      
+      if (!apiUrl || !apiKey) {
+        throw new Error('API configuration is missing');
+      }
+
+      const response = await fetch(
+        `${apiUrl}?q=${encodeURIComponent(query)}&key=${apiKey}`
+      );
+      
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
       const data = await response.json();
       if (data.items) {
         setBooks(data.items.map(item => ({
@@ -40,9 +69,10 @@ export const BookProvider = ({ children }) => {
         })));
       } else {
         setBooks([]);
+        setError('No books found matching your search');
       }
     } catch (err) {
-      setError('Failed to fetch books. Please try again later.');
+      setError(err.message || 'Failed to fetch books. Please try again later.');
       console.error('Error fetching books:', err);
     } finally {
       setLoading(false);

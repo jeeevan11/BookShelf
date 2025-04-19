@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-[#0a1324];
+  }
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
+    @apply bg-[#0a1324] text-white;
   }
 }
 
@@ -13,7 +16,7 @@
     @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
   }
   .btn-primary {
-    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-[#b08d57] text-white hover:bg-[#9a7a49];
   }
   .btn-secondary {
     @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
@@ -28,9 +31,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: #1a1a1a;
-  background-color: #ffffff;
+  color-scheme: dark;
+  background-color: #0a1324;
+  color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -40,25 +43,31 @@
 
 a {
   font-weight: 500;
-  color: #0ea5e9;
+  color: #b08d57;
   text-decoration: inherit;
   transition: color 0.2s ease;
 }
+
 a:hover {
-  color: #0284c7;
+  color: #9a7a49;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #0a1324;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', Georgia, serif;
+  color: #ffffff;
 }
 
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
   font-weight: 700;
-  color: #0f172a;
 }
 
 button {
@@ -70,25 +79,32 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: all 0.2s ease;
+  background-color: #1a2537;
+  color: #ffffff;
 }
+
 button:hover {
-  transform: translateY(-1px);
+  background-color: #2a3547;
 }
+
 button:focus,
 button:focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #b08d57;
   outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #ffffff;
-    background-color: #0f172a;
+    color: #f0eae4;
+    background-color: #4a3726;
   }
   a:hover {
-    color: #38bdf8;
+    color: #c9b7a3;
   }
   button {
-    background-color: #1e293b;
+    background-color: #73563d;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: #f0eae4;
   }
 }

@@ -8,20 +8,20 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-secondary-50">
-      <nav className="bg-white border-b border-secondary-200">
-        <div className="container mx-auto px-4">
+    <div className="min-h-screen flex flex-col bg-[#0a1324]">
+      <nav className="bg-[#1a2537]">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="text-xl font-semibold text-primary-600">
+            <Link to="/" className="text-xl font-semibold text-[#b08d57]">
               BookDB
             </Link>
-            <div className="flex space-x-8">
+            <div className="flex items-center space-x-8">
               <Link
                 to="/"
                 className={`text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'text-primary-600'
-                    : 'text-secondary-500 hover:text-primary-600'
+                    ? 'text-[#b08d57]'
+                    : 'text-gray-300 hover:text-[#b08d57]'
                 }`}
               >
                 Home
@@ -30,8 +30,8 @@ const Layout = ({ children }) => {
                 to="/search"
                 className={`text-sm font-medium transition-colors ${
                   isActive('/search')
-                    ? 'text-primary-600'
-                    : 'text-secondary-500 hover:text-primary-600'
+                    ? 'text-[#b08d57]'
+                    : 'text-gray-300 hover:text-[#b08d57]'
                 }`}
               >
                 Search
@@ -40,8 +40,8 @@ const Layout = ({ children }) => {
                 to="/favorites"
                 className={`text-sm font-medium transition-colors ${
                   isActive('/favorites')
-                    ? 'text-primary-600'
-                    : 'text-secondary-500 hover:text-primary-600'
+                    ? 'text-[#b08d57]'
+                    : 'text-gray-300 hover:text-[#b08d57]'
                 }`}
               >
                 Favorites
@@ -50,11 +50,11 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </nav>
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow">
         {children}
       </main>
-      <footer className="bg-white border-t border-secondary-200 py-6">
-        <div className="container mx-auto px-4 text-center text-secondary-500 text-sm">
+      <footer className="bg-[#1a2537] py-6">
+        <div className="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
           <p>© 2024 BookDB - Your Ultimate Book Discovery Platform</p>
         </div>
       </footer>
