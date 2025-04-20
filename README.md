@@ -93,10 +93,3 @@ src/
 
 
 
-## 🔒 Environment Variables
-
-The following environment variables are required:
-
-- `VITE_GOOGLE_BOOKS_API_URL`: Google Books API endpoint
-- `VITE_GOOGLE_BOOKS_API_KEY`: Your Google Books API key
-
