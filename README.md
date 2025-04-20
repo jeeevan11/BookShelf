@@ -91,9 +91,7 @@ src/
 - ✅ Reusable components
 - ✅ No hard-coded values
 
-## 📸 Screenshots
 
-[Add screenshots of your application here]
 
 ## 🔒 Environment Variables
 
@@ -102,10 +100,3 @@ The following environment variables are required:
 - `VITE_GOOGLE_BOOKS_API_URL`: Google Books API endpoint
 - `VITE_GOOGLE_BOOKS_API_KEY`: Your Google Books API key
 
-## 📄 License
-
-MIT
-
-## 👨‍💻 Author
-
-[Your Name]
